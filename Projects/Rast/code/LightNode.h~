@@ -1,0 +1,21 @@
+#include "math.h"
+#include "GraphicsNode.h"
+#include <memory>
+
+class LightNode
+{
+public:
+	void setPosition(vector4D p) { position = p; };
+	void setColor(vector4D c) { color = c; };
+	void setIntensity(float i) { intensity = i; color = color*intensity; };
+	void setGfxRef(std::shared_ptr<ShaderObject> g) { shader = g; };
+	vector4D getPosition() { return position; };
+	vector4D getColor() { return color; };
+	float getIntensity() { return intensity; };
+	void applyMat();
+private:
+	vector4D position;
+	vector4D color;
+	float intensity;
+	std::shared_ptr<ShaderObject> shader;
+};
